@@ -1,6 +1,11 @@
+import os
+os.system("cls||clear")
+
 # Variáveis para armazenar os números
+numeros = []
 for i in range (5):
     numero = int (input(f"Digite o {i+1}° numero:"))
+    numeros.append(numero)
 
 # Variáveis para armazenar as estatísticas
 quantidade_pares = 0
@@ -14,17 +19,18 @@ soma_impares = 0
 soma_geral = 0
 
 # Processando cada número
-if numero % 2 == 0:
-    quantidade_pares += 1
-    soma_pares += numero
-else:
-    quantidade_impares += 1
-    soma_impares += numero
+for numero in numeros:
+    if numero % 2 == 0:
+        quantidade_pares += 1
+        soma_pares += numero
+    else:
+        quantidade_impares += 1
+        soma_impares += numero
 
-if numero > 0:
-    quantidade_positivos += 1
-elif numero < 0:
-    quantidade_negativos += 1
+    if numero > 0:
+        quantidade_positivos += 1
+    elif numero < 0:
+        quantidade_negativos += 1
 
 maior_numero = max(maior_numero, numero)
 menor_numero = min(menor_numero, numero)
@@ -32,12 +38,12 @@ menor_numero = min(menor_numero, numero)
 soma_geral += numero
 
 # Calculando as médias
-media_pares = soma_pares / quantidade_pares 
-media_impares = soma_impares / quantidade_impares 
-media_geral = soma_geral / numero
+mmedia_pares = soma_pares / quantidade_pares if quantidade_pares > 0 else 0
+media_impares = soma_impares / quantidade_impares if quantidade_impares > 0 else 0
+media_geral = soma_geral / len(numeros)
 
 # Mostrando números na ordem inversa
-numeros_invertidos = [numero]
+numeros_invertidos = [numeros]
 
 # Imprimindo as estatísticas
 print("\nEstatísticas dos números:")
@@ -47,7 +53,7 @@ print(f"Quantidade de positivos: {quantidade_positivos}")
 print(f"Quantidade de negativos: {quantidade_negativos}")
 print(f"Maior número: {maior_numero}")
 print(f"Menor número: {menor_numero}")
-print(f"Média dos números pares: {media_pares:.2f}")
+print(f"Média dos números pares: {mmedia_pares:.2f}")
 print(f"Média dos números ímpares: {media_impares:.2f}")
 print(f"Média de todos os números: {media_geral:.2f}")
 print(f"Números na ordem inversa: {numeros_invertidos}")
